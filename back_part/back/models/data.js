@@ -94,6 +94,7 @@ const getone=(id)=>{
         params.companyLogo=results[0].companyLogo;
         flag=false;
      }
+
      if(results[0].companyLogo&&flag&&(results[0].companyLogo!="/uploads/logos/bg.jpg")){
         fs.removeSync(PATH.resolve(__dirname, '../public'+results[0].companyLogo))
     }
@@ -107,6 +108,7 @@ const getone=(id)=>{
      }
  
     return Position.updateOne({_id: params._id},params).then((result)=>{
+        result.republish=params.republish;
         return result;
     }).catch(()=>{
         return false;

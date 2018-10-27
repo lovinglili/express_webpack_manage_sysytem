@@ -10,8 +10,9 @@ import qs from 'querystring'
 //获取列表
 
 var datafromBack="";
+var position_preUrl="";
 const list = async (req, res, next) => {
-   
+    position_preUrl=req.url;//用于返回列表
     if( req.query==null){
         req.query= {};
         
@@ -40,17 +41,24 @@ const list = async (req, res, next) => {
         data: datafromBack
     });
     res.render(html);
-    bindListEvent()
+    bindListEvent(datafromBack);
+ 
+    $('.searchBykeyWords').val(req.query.search);
     removeOne(datafromBack);
 }
 
-const bindListEvent = () => {
+const bindListEvent = (datafromBack) => {
     $('.position-list #addbtn').on('click', function () {
         bus.emit('go', '/position-save')
     })
     $('.pos-update').click(function () {
         let id = $(this).parents('tr').data('id')
         bus.emit('go', '/position-update', { id });
+    });
+    $('#possearch').on('click',()=>{
+        var serachWords=$('.searchBykeyWords').val();
+        
+        bus.emit('go','/position-list?pageNo=1&pageSize='+datafromBack.pageInfo.pageSize+'&search='+serachWords)
     })
 
 }
@@ -96,12 +104,13 @@ const update = async (req, res) => {
     });
     res.render(html);
     $('.position-update #back').on('click', function () {
-        bus.emit('go', '/position-list')
+       
+        bus.emit('go', position_preUrl)
     })
 
     let _isloading = false;
     $('.position-update #companyLogo').on('change', function () {
-        console.log($(this).length)
+        // console.log($(this).length)
 
         var reads = new FileReader();
         var f = this.files[0];
@@ -116,6 +125,11 @@ const update = async (req, res) => {
         if (_isloading) return false;
         _isloading = true;
         let result = await position_model.update();
+        // console.log(result,"as");
+        if(result.data.republish){
+            // console.log("in")
+            position_preUrl='/position-list';
+        }
         _isloading = false;
         handleToastByData(result);
     })
@@ -130,7 +144,7 @@ const bindSaveEvent = () => {
         bus.emit('go', '/position-list')
     })
     $('#companyLogo').on('change', function () {
-        console.log($(this).length)
+        // console.log($(this).length)
 
         var reads = new FileReader();
         var f = this.files[0];
@@ -148,7 +162,7 @@ const bindSaveEvent = () => {
         // let _inputDatas=qs.parse($(this).serialize());
         let result = await position_model.save();
         _isloading = false;
-        console.log(result, "save");
+        // console.log(result, "save");
         handleToastByData(result);
 
     })
