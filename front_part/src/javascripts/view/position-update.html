@@ -1,0 +1,70 @@
+<div class="box box-info position-update">
+    <div class="box-header with-border">
+        <h3 class="box-title">添加职位信息</h3>
+    </div>
+    <!-- /.box-header -->
+    <!-- form start -->
+    <form class="form-horizontal" id="update-form">
+        <div class="box-body">
+            <div class="form-group">
+                
+                <label for="companyLogo" class="col-sm-2 control-label">公司logo</label>
+               
+                <div class="col-sm-10">
+                        {{if data.companyLogo}}
+                        <img id="update_img" src="http://localhost:3000{{data.companyLogo}}" width=60vw>
+                        {{else}}
+                        <img id="update_img" width=60vw src="">
+                        {{/if}}
+                    <input type="file" name="companyLogo" id="companyLogo" style="padding-top:10px">
+                </div>
+            </div>
+            <div class="form-group">
+
+                <label for="companyName" class="col-sm-2 control-label">公司名称</label>
+
+                <div class="col-sm-10">
+                    <input required type="text" class="form-control" name="companyName" id="companyName" placeholder="请输入公司名字"
+                        value='{{data.companyName}}'>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="positionName" class="col-sm-2 control-label">职位名称</label>
+
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="positionName" id="positionName" placeholder="请输入职位名称"
+                        value='{{data.positionName}}'>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="city" class="col-sm-2 control-label">工作地点</label>
+
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="city" id="city" placeholder="请输入工作地点" value='{{data. city}}'>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="salary" class="col-sm-2 control-label">薪资范围</label>
+
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="salary" id="salary" placeholder="请输入薪资范围 " value='{{data.salary}}'>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="republish" class="col-sm-2 control-label">是否重新发布</label>
+
+                <div class="col-sm-10">
+                    <input type="checkbox" name="republish" id="republish">
+                </div>
+            </div>
+            <input type="hidden" name="_id" value="{{data._id}}">
+        </div>
+        <!-- /.box-body -->
+        <div class="box-footer">
+            <button type="button" id="back" class="btn btn-default">返回列表</button>
+            <button type="submit" class="btn btn-info pull-right">提交</button>
+            <button type="reset" class="btn btn-default pull-right" style="margin-right: 15px">重置</button>
+        </div>
+        <!-- /.box-footer -->
+    </form>
+</div>
