@@ -3,7 +3,7 @@ import home_template from '../view/home.html'
 import no_found_remplate from '../view/404.html'
 import position_controller from '../controllers/position'
 import bus from '../util/bus'
-
+import pageHeader_controller  from '../controllers/pageHeader'
 var router =null;
 const _init=()=>{
     router = new SMERouter('router-view');
@@ -12,13 +12,15 @@ const _init=()=>{
         _activeLink(req.route)
     });
 
+    
+    router.route('/',pageHeader_controller.changeHeaderData);
+    
     router.route('/home',(req,res,next)=>{
         res.render(home_template);
     });
     router.route('/position-save',position_controller.save);
     router.route('/position-list',position_controller.list);
     router.route('/position-update', position_controller.update)
-
     router.route('/not-found',(req,res,next)=>{
         res.render(no_found_remplate);
        

@@ -1,0 +1,17 @@
+<section class="content-header">
+    <h1>
+      {{data.datas.mainHeader}}
+      <small>{{data.datas.smallHeader}}</small>
+    </h1>
+    
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> {{data.rightDatas[0]}}</a></li>
+      <% for (var i=1;i < data.rightDatas.length;i++){%>
+        {{if (data.rightDatas[i][0]!="")}}
+        <li class="{{if (data.rightDatas[i][1]==data.nowUrl)}}active{{/if}}"><a href="#<%= data.rightDatas[i][1]%>"><%= data.rightDatas[i][0]%></a></li>
+        {{/if}}
+        <%}%>
+     
+      
+    </ol>
+  </section>
