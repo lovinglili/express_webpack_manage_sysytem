@@ -13,6 +13,7 @@ var datafromBack="";
 var position_preUrl="";
 const list = async (req, res, next) => {
     position_preUrl=req.url;//用于返回列表
+    // req.query= req.query||{};//用于刚打开list页的时候url不显示pageNo等参数。
     if( req.query==null){
         req.query= {};
         

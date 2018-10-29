@@ -22,8 +22,8 @@ const save= async (req,res)=>{
     let _data=await position_model.save(req.body);
     let _err=errorData(_data,res,'position');
     if( _err )res.render('position',{
-        code:200,
-        data:JSON.stringify(_data)
+        code:201,
+        data:JSON.stringify('用户名已经存在')
     })
     
 

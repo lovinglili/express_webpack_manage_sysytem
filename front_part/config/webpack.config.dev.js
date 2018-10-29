@@ -6,7 +6,8 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 module.exports={
     mode:"development",
     entry:{
-        main:"./src/javascripts/main"
+        main:"./src/javascripts/main",
+        admin: ['./src/javascripts/admin']
     },
     output:{
         filename:"[name].js",
@@ -26,7 +27,13 @@ module.exports={
     plugins:[
         new HtmlWebpackPlugin({
             template:"./src/index.html",
-            filename:"index.html"
+            filename:"index.html",
+            chunks: ['main']
+        }),
+        new HtmlWebpackPlugin({
+            template: './src/admin.html',
+            filename: 'admin.html',
+            chunks: ['admin']
         }),
         new CopyWebpackPlugin([{
             from:PATH.resolve(__dirname, '../static'),
