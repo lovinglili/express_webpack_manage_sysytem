@@ -39,7 +39,8 @@ const bindEvent=()=>{
             case 203: toast('密码错误'); break;
             case 202:  toast('用户不存在'); break;
             default: 
-                // localStorage.user = qs.parse(_params).username
+                // localStorage.user = qs.parse(_params).username;
+                localStorage.token = _result.data.token;
                 window.location.href = "/"; 
             break;
         }

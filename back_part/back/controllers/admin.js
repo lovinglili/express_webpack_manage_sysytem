@@ -1,7 +1,8 @@
 
 
 const admin_model = require('../models/admin');
-const { errorData } = require('../util')
+const { errorData } = require('../util');
+const jwt = require('jsonwebtoken')
 
 const signin = async (req, res, next) => {
 
@@ -14,15 +15,25 @@ const signin = async (req, res, next) => {
         let _data = await admin_model.signin(req.body.password, _judge_result[0]);
 
         if (_data) {
-            //登录成功的时候存储session
-            req.session.userInfo = {
+            // //登录成功的时候存储session
+            // req.session.userInfo = {
+            //     userid: _judge_result[0]._id,
+            //     level: _judge_result[0].level || 7
+            // }
+
+            //登录成功的时候记录token；
+            //对称加密
+            let _payload = { // 钥加密的数据
                 userid: _judge_result[0]._id,
-                level: _judge_result[0].level || 7
+                username: _judge_result[0].username,
+                level: 8,
             }
+            let _cert = 'i' // 密钥
+            var _token = jwt.sign(_payload, _cert);
 
             res.render('admin', {
                 code: 200,
-                data: JSON.stringify('success')
+                data: JSON.stringify({token: _token})
             })
         } else {
             res.render('admin', {

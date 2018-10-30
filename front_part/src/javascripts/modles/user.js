@@ -1,38 +1,31 @@
 
-const isSignIn=()=>{
+const isSignIn=( data )=>{
     return $.ajax({
         url:'/api/users/v1/isSign',
         type:"POST",
+        data,
         success:(result)=>{
-            console.log(result);
+           return result;
         }
     });
 
 }
 
-const UserDetail=()=>{
+const UserDetail=(data)=>{
     return $.ajax({
         url:'/api/users/v1/Detail',
         type:"POST",
+        data,
         success:(result)=>{
-            console.log(result);
+           return result;
         }
     });
 }
 
 
-const exit =()=>{
-    return $.ajax({
-        url:'/api/users/v1/exit',
-        type:"POST",
-        success:(result)=>{
-            console.log(result);
-        }
-    });
-}
 
 export default {
     isSignIn,
-    UserDetail,
-    exit
+    UserDetail
+
 }
