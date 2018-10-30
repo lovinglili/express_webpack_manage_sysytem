@@ -1,5 +1,6 @@
 
-
+const fs  = require('fs')
+const PATH  = require('path')
 const admin_model = require('../models/admin');
 const { errorData } = require('../util');
 const jwt = require('jsonwebtoken')
@@ -22,15 +23,15 @@ const signin = async (req, res, next) => {
             // }
 
             //登录成功的时候记录token；
-            //对称加密
+            //非对称加密
             let _payload = { // 钥加密的数据
                 userid: _judge_result[0]._id,
                 username: _judge_result[0].username,
                 level: 8,
             }
-            let _cert = 'i' // 密钥
-            var _token = jwt.sign(_payload, _cert);
-
+           //取出私钥
+           let _private=fs.readFileSync(PATH.resolve(__dirname,'../keys/private.key'))
+           var _token=jwt.sign(_payload,_private,{algorithm:'RS256'})
             res.render('admin', {
                 code: 200,
                 data: JSON.stringify({token: _token})
