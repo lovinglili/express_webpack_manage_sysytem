@@ -48,5 +48,6 @@ const judgeUserByUsername=(username)=>{
 module.exports={
     signup,
     signin,
-    judgeUserByUsername
+    judgeUserByUsername,
+    UserModel
 }

@@ -19,7 +19,6 @@ const bindEvent=()=>{
     $('#admin-content').on('submit','#signup-form',async function(e){
         e.preventDefault();
         let _params=$(this).serialize();
-        console.log("ASDFASD")
         let _result= await admin_model.signup(qs.parse(_params));
         switch(_result.status){
             case 500: toast('失败，服务器出了问题'); break;
@@ -35,7 +34,6 @@ const bindEvent=()=>{
     $('#admin-content').on('submit','#signin-form',async function(e){
         e.preventDefault();
         let _params=$(this).serialize();
-        console.log(_params);
         let _result=await admin_model.signin(qs.parse(_params));
         switch ( _result.status ) {
             case 203: toast('密码错误'); break;
