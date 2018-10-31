@@ -29,6 +29,7 @@ const signin = async (req, res, next) => {
                 username: _judge_result[0].username,
                 level: 8,
             }
+            
            //取出私钥
            let _private=fs.readFileSync(PATH.resolve(__dirname,'../keys/private.key'))
            var _token=jwt.sign(_payload,_private,{algorithm:'RS256'})
