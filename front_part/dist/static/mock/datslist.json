@@ -1,0 +1,77 @@
+[
+    {
+        "logger": {
+            "traceCapable": true,
+            "name": "com.lagou.entity.mobile.MobilePosition"
+        },
+        "positionId": 4404879,
+        "positionName": "项目经理",
+        "city": "杭州",
+        "createTime": "今天 16:33",
+        "salary": "7k-14k",
+        "companyId": 85833,
+        "companyLogo": "i/image/M00/AD/BA/CgqKkVi1ToaAKp7GAAA-aGAL1nw618.jpg",
+        "companyName": "创建科技",
+        "companyFullName": "浙江创建科技有限公司"
+    },
+    {
+        "logger": {
+            "traceCapable": true,
+            "name": "com.lagou.entity.mobile.MobilePosition"
+        },
+        "positionId": 4420675,
+        "positionName": "17/18届营销储干",
+        "city": "成都",
+        "createTime": "今天 16:32",
+        "salary": "5K-9K",
+        "companyId": 326928,
+        "companyLogo": "i/image3/M00/20/E0/CgpOIFqTf8uAaJkeAAHn15oRMAM237.jpg",
+        "companyName": "乐有家",
+        "companyFullName": "成都市乐有家房产经纪有限公司聚福路分公司"
+    },
+    {
+        "logger": {
+            "traceCapable": true,
+            "name": "com.lagou.entity.mobile.MobilePosition"
+        },
+        "positionId": 4385132,
+        "positionName": "行政专员 (MJ000527)",
+        "city": "北京",
+        "createTime": "今天 16:30",
+        "salary": "5k-8k",
+        "companyId": 36162,
+        "companyLogo": "i/image/M00/29/C7/Cgp3O1cwXzWAPpvjAAAYnaMmScM575.png",
+        "companyName": "作业盒子",
+        "companyFullName": "北京作业盒子科技有限公司"
+    },
+    {
+        "logger": {
+            "traceCapable": true,
+            "name": "com.lagou.entity.mobile.MobilePosition"
+        },
+        "positionId": 4438222,
+        "positionName": "大区经理 (MJ000584)",
+        "city": "北京",
+        "createTime": "今天 16:30",
+        "salary": "20k-40k",
+        "companyId": 36162,
+        "companyLogo": "i/image/M00/29/C7/Cgp3O1cwXzWAPpvjAAAYnaMmScM575.png",
+        "companyName": "作业盒子",
+        "companyFullName": "北京作业盒子科技有限公司"
+    },
+    {
+        "logger": {
+            "traceCapable": true,
+            "name": "com.lagou.entity.mobile.MobilePosition"
+        },
+        "positionId": 4425828,
+        "positionName": "商务经理",
+        "city": "北京",
+        "createTime": "今天 16:29",
+        "salary": "8k-16k",
+        "companyId": 122778,
+        "companyLogo": "i/image/M00/1B/F1/CgqKkVb-P16AGsdCAAAMTxJvSvw975.jpg",
+        "companyName": "前潮网络",
+        "companyFullName": "北京前潮宇睿科技有限公司"
+    }
+]
