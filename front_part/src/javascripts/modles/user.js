@@ -22,10 +22,20 @@ const UserDetail=(data)=>{
     });
 }
 
-
+const allow=(data)=>{
+    return $.ajax({
+        url:'/api/users/v1/check',
+        type:"POST",
+        data,
+        success:(result)=>{
+            return result;
+        }
+    })
+}
 
 export default {
     isSignIn,
-    UserDetail
+    UserDetail,
+    allow
 
 }

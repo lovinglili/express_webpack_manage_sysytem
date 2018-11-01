@@ -4,14 +4,21 @@ import position_list_template from '../view/position-list.html'
 import position_save_template from '../view/position-save.html'
 
 import position_update_template from '../view/position-update.html'
-
+import noallow_template from '../view/noallow.html'
 import position_model from '../modles/data_list'
-import qs from 'querystring'
+import users from './user'
+
 //获取列表
 
 var datafromBack="";
 var position_preUrl="";
 const list = async (req, res, next) => {
+    let resultss=await users.allow();
+    alert(resultss);
+    if(resultss!=200){
+        res.render(noallow_template);
+        return false;
+    }
     position_preUrl=req.url;//用于返回列表
     // req.query= req.query||{};//用于刚打开list页的时候url不显示pageNo等参数。
     if( req.query==null){

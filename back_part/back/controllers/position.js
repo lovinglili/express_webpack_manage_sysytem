@@ -2,10 +2,8 @@
 const { errorData } = require('../util')
 var position_model=require('../models/data')
 
-
 const list= async (req,res)=>{
     res.set('content-type', 'application/json; charset=utf8');
-    console.log(req.jquery,"as")
     let _data=await position_model.list(req.query);
     let _err=errorData(_data,res,'position');
     if( _err )res.render('position',{
@@ -62,6 +60,7 @@ const update= async (req,res)=>{
     })
     
 }
+
 module.exports={
     save,
     remove,

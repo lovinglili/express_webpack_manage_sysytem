@@ -5,6 +5,7 @@ var position_controller = require('../controllers/position')
 
 var router = express.Router();
 
+
 router.get('/list',position_controller.list);
 router.post('/save',fileUpload,position_controller.save);
 router.post('/remove',position_controller.remove);

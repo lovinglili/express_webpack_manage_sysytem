@@ -13,6 +13,7 @@ router.use(resApplicationJson)
 
 router.post('/isSign',auth.userSigninAuth, users_controller.isSign);
 router.post('/Detail', auth.userSigninAuth,users_controller.Detail);
+router.post('/check', auth.userSigninAuth,users_controller.check);
 
 
 module.exports = router;

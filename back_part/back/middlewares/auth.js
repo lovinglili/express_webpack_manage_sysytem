@@ -4,14 +4,13 @@ const PATH=require('path')
 
 const userSigninAuth=(req,res,next)=>{
     try{
+        console.log(req.body.token)
         let _public = fs.readFileSync(PATH.resolve(__dirname, '../keys/public.key'))
         let decoded = jwt.verify(req.body.token, _public, { algorithms: 'RS256' })
         
         let _time = (Date.now()/1000)-decoded.italics;
-        let _expires=30;
+        let _expires=30000;
         if(_time>_expires){
-            
-
             res.render('user',{
                 code:403,
                 data:JSON.stringify({msg:'登录过期，请重新登录'})
@@ -20,8 +19,7 @@ const userSigninAuth=(req,res,next)=>{
             req.token=decoded;
             next();
         }
-    }catch(err){
-      alert("df")      
+    }catch(err){    
         res.render('user',{
             code:403,
             data:JSON.stringify({msg:'请登录后操作'})

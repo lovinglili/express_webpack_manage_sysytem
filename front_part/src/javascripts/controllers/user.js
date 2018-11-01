@@ -48,8 +48,15 @@ const userDetail = async () => {
 
 
 //权限的处理
+const allow =async ()=>{
+    let _token = localStorage.getItem('token') || '';
+    let _result = await user_model.allow({ token: _token });
+    return _result;
+
+}
 
 export default {
     userInfo,
-    userDetail
+    userDetail,
+    allow
 }
